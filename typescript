@@ -1,0 +1,5 @@
+// In a component
+import { useApi } from '@/hooks/useApi';
+import { getDashboard } from '@/services/api';
+
+const { data, loading, error, refetch } = useApi(getDashboard);
