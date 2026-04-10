@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosError } from 'axios';
 
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: import.meta.env.VITE_APP_API_BASE_URL || 'https://shubhmilan-backend-k5p7.onrender.com',
+  BASE_URL: import.meta.env.VITE_APP_API_BASE_URL || 'https://shubhmilan-backend-974m.onrender.com',
   // BASE_URL: import.meta.env.VITE_APP_API_BASE_URL || 'http://localhost:3000/api',
   TIMEOUT: 10000,
   MOCK_MODE: false,

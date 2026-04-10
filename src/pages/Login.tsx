@@ -22,6 +22,7 @@ export default function Login() {
       const res: LoginUserResponse = await loginUser({ phone, password });
       if (res && res.token) {
         localStorage.setItem("auth_token", res.token);
+        console.log(res.token);
         toast.success("Login successful!");
         navigate("/dashboard");
       } else {

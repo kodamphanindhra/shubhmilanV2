@@ -11,10 +11,10 @@ import type { DashboardResponse } from "@/types/api";
 import { mockDashboardResponse } from "@/mockData/dashboard";
 
 export const getDashboard = async (): Promise<DashboardResponse> => {
-  if (API_CONFIG.MOCK_MODE) {
-    await mockDelay();
-    return mockDashboardResponse;
-  }
+  // if (API_CONFIG.MOCK_MODE) {
+  //   await mockDelay();
+  //   return mockDashboardResponse;
+  // }
 
   const result = await apiMiddleware<DashboardResponse>(() =>
     axiosInstance.get(API_ENDPOINTS.dashboard.get)
