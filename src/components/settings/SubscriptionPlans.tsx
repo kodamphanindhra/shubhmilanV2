@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useI18n } from "@/hooks/use-i18n";
-import { useQuery, useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
+// Convex removed
 import { MOCK_SUBSCRIPTION_PLANS, MOCK_USER_PROFILE } from "@/mockData/settings";
 import { SubscriptionCard } from "./SubscriptionCard";
 import { toast } from "sonner";
@@ -10,8 +9,12 @@ import { CalendarDays } from "lucide-react";
 
 export function SubscriptionPlans() {
   const { t } = useI18n();
-  const userProfile = useQuery(api.settings.getUserProfile);
-  const purchasePlan = useMutation(api.settings.purchasePlan);
+  // Convex removed: use mock data only
+  const userProfile = MOCK_USER_PROFILE;
+  const purchasePlan = async ({ planId }: { planId: string }) => {
+    // Simulate API call
+    return new Promise((resolve) => setTimeout(resolve, 500));
+  };
   const [isLoading, setIsLoading] = useState(false);
 
   // Use mock data as fallback

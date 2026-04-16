@@ -17,12 +17,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Sidebar } from "@/components/Sidebar";
 import { ProfileActionMenu } from "@/components/profiles/ProfileActionMenu";
 import { ShareProfileModal } from "@/components/profiles/ShareProfileModal";
@@ -33,9 +27,6 @@ import { motion } from "framer-motion";
 import {
   Filter,
   Loader2,
-  Mail,
-  MapPin,
-  Phone,
   Search,
   User,
   X,
@@ -47,9 +38,13 @@ import { useAuth } from "@/hooks/use-auth";
 import { useNavigate, useSearchParams } from "react-router";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { useApi } from "@/hooks/useApi";
+import { listProfiles } from "../services/api";
 
 export default function Profiles() {
   const { isLoading, isAuthenticated, user } = useAuth();
+  const { data: listOfProfiles, loading: profilesLoading } = useApi(listProfiles);
+  console.log("List of profiles:", listOfProfiles);
   const { t } = useI18n();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

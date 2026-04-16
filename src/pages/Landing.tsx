@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/use-i18n";
 import { motion } from "framer-motion";
 import { ArrowRight, Handshake, Shield, Users, Zap } from "lucide-react";
@@ -7,6 +8,7 @@ import { useNavigate } from "react-router";
 export default function Landing() {
   const { t } = useI18n();
   const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
   const handleNavigateDashboard = () => {
     navigate("/dashboard");
@@ -24,7 +26,7 @@ export default function Landing() {
             <span className="text-lg sm:text-xl font-bold tracking-tight">{t.landing.appName}</span>
           </div>
           <Button onClick={handleNavigateDashboard} size="sm" className="sm:h-10">
-            {t.landing.dashboard}
+            {isAuthenticated ? t.landing.dashboard : "Login / Sign Up"}
           </Button>
         </div>
       </nav>
@@ -52,7 +54,7 @@ export default function Landing() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
             <Button size="lg" onClick={handleNavigateDashboard} className="gap-2 w-full sm:w-auto">
-              {t.landing.goToDashboard}
+              {isAuthenticated ? t.landing.goToDashboard : t.landing.getStarted}
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
@@ -141,7 +143,7 @@ export default function Landing() {
               {t.landing.ctaDescription}
             </p>
             <Button size="lg" onClick={handleNavigateDashboard} className="gap-2 w-full sm:w-auto">
-              {t.landing.goToDashboard}
+              {isAuthenticated ? t.landing.goToDashboard : t.landing.getStarted}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </motion.div>

@@ -6,16 +6,19 @@ import { Label } from "@/components/ui/label";
 import { useI18n } from "@/hooks/use-i18n";
 import { Loader2, KeyRound } from "lucide-react";
 import { toast } from "sonner";
-import { useMutation, useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+// Convex removed
 import { MOCK_USER_PROFILE } from "@/mockData/settings";
 import { PasswordModal } from "./PasswordModal";
 
 
 export function ProfileForm() {
   const { t } = useI18n();
-  const userProfile = useQuery(api.settings.getUserProfile);
-  const updateProfile = useMutation(api.settings.updateProfile);
+  // Convex removed: use mock data only
+  const userProfile = MOCK_USER_PROFILE;
+  const updateProfile = async ({ name, mobile }: { name: string; mobile: string }) => {
+    // Simulate API call
+    return new Promise((resolve) => setTimeout(resolve, 500));
+  };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
