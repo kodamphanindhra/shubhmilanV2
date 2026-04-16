@@ -609,10 +609,10 @@ const hasAny = (obj: AnyProfile, keys: string[]): boolean =>
               </DialogTitle>
               {profile && (
                 <Badge
-                  variant={profile.verified ? "default" : "secondary"}
-                  className={cn("shrink-0", !profile.verified && "bg-[#F0F8F5] text-foreground")}
+                  variant={profile.verified || profile.status?.toLowerCase() === "active" ? "default" : "secondary"}
+                  className={cn("shrink-0", !(profile.verified || profile.status?.toLowerCase() === "active") && "bg-[#F0F8F5] text-foreground")}
                 >
-                  {profile.verified ? t.profiles.verified : t.profiles.pending}
+                  {profile.verified || profile.status?.toLowerCase() === "active" ? t.profiles.verified : t.profiles.pending}
                 </Badge>
               )}
             </div>

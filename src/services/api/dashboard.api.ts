@@ -8,7 +8,6 @@ import {
   MOCK_PROFESSIONS,
 } from '@/mockData/profiles';
 import type { DashboardResponse } from "@/types/api";
-import { mockDashboardResponse } from "@/mockData/dashboard";
 
 export const getDashboard = async (): Promise<DashboardResponse> => {
   // if (API_CONFIG.MOCK_MODE) {
@@ -47,5 +46,5 @@ export const getMetaData = async () => {
       },
     };
   }
-  return apiMiddleware(() => axiosInstance.get(API_ENDPOINTS.dashboard.meta));
+  return apiMiddleware(() => axiosInstance.get(API_ENDPOINTS.dashboard?.meta));
 };

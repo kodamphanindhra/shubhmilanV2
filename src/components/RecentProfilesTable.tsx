@@ -63,7 +63,8 @@ export function RecentProfilesTable({ profiles, loading }: RecentProfilesTablePr
 
   // New: handlers for menu actions
   const handleEdit = (profile: any) => {
-    toast.info(`Edit profile: ${profile.name}`);
+    setSelectedProfileId(profile?._id ?? null);
+    setSelectedProfile(profile);
   };
   const handleDelete = (profile: any) => {
     toast.info(`Delete profile: ${profile.name}`);
@@ -100,7 +101,7 @@ export function RecentProfilesTable({ profiles, loading }: RecentProfilesTablePr
                 const locationParts = [profile?.city, profile?.state].filter(Boolean);
                 const location =
                   locationParts.length > 0 ? locationParts.join(", ") : profile?.country ?? "N/A";
-                const verified = profile?.status?.toLowerCase() === "verified";
+                const verified = profile?.status?.toLowerCase() === "verified" || profile?.status?.toLowerCase() === "active";
 
                 return (
                   <ProfileListItem

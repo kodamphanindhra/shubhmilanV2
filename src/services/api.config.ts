@@ -53,11 +53,11 @@ export const API_ENDPOINTS = {
   // Profile
   profile: {
     create: '/api/profile/create',
-    update: (id: string) => `/api/profile/${id}`,
-    get: (id: string) => `/api/profile/${id}`,
-    list: '/api/profile/all',
-    delete: (id: string) => `/api/profile/${id}`,
-    match: (id: string) => `/api/profiles/${id}/match`,
+    update: (id: string) => `/api/client/profiles/${id}`,
+    get: (id: string) => `/api/client/profiles/${id}`,
+    list: '/api/client/profiles/all',
+    delete: (id: string) => `/api/client/profiles/${id}`,
+    match: (id: string) => `/api/client/profiles/${id}/match`,
   },
 
   // Dashboard

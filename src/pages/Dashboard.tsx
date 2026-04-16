@@ -21,6 +21,7 @@ export default function Dashboard() {
   const { data: dashboardData, loading: dashboardLoading } = useApi(getDashboard);
 
   const counts = dashboardData?.counts ?? mockDashboardResponse.counts;
+  console.log("Dashboard:", dashboardData);
   const recentVerified = dashboardData?.recentVerified ?? mockDashboardResponse.recentVerified;
   const recentPending = dashboardData?.recentPending ?? mockDashboardResponse.recentPending;
 
@@ -38,7 +39,7 @@ export default function Dashboard() {
   }, [isLoading, isAuthenticated, navigate]);
 
   // Show loading state
-  if (isLoading || !isAuthenticated) {
+  if (isLoading || !isAuthenticated || dashboardLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
